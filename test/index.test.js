@@ -12,9 +12,9 @@ describe('cryptr-token', function () {
         const encrypted = encrypt(input);
         const ouptput = decrypt(encrypted)
 
-        console.log('input', input);
-        console.log('encrypted', encrypted);
-        console.log('ouptput', ouptput);
+        // console.log('input', input);
+        // console.log('encrypted', encrypted);
+        // console.log('ouptput', ouptput);
         
         assert.deepEqual(input, ouptput)
     })
