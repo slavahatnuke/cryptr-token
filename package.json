@@ -1,0 +1,29 @@
+{
+  "name": "cryptr-token",
+  "version": "1.0.0",
+  "description": "cryptr is a simple aes-256-ctr token module for node.js",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "base64url": "^3.0.1",
+    "cryptr": "^4.0.2"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slavahatnuke/cryptr-token.git"
+  },
+  "author": "slava hatnuke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/slavahatnuke/cryptr-token/issues"
+  },
+  "homepage": "https://github.com/slavahatnuke/cryptr-token#readme"
+}
