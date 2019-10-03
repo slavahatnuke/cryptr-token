@@ -1,6 +1,6 @@
 {
   "name": "cryptr-token",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "cryptr-token is a simple aes-256-ctr token module for node.js",
   "main": "index.js",
   "directories": {
