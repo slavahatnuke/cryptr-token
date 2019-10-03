@@ -3,17 +3,19 @@
 cryptr-token is a simple aes-256-ctr token module for node.js
 
 ```javascript
-        const Cipher = require('cryptr-token')
-        const {encrypt, decrypt} = Cipher('secret1')
+        const secret = 'secret$$$$here'
+        const {encrypt} = Cipher(secret)
+        const {decrypt} = Cipher(secret)
 
-        const input = {message: 'hello1'}
+        const input = {message: 'hello'}
 
-        const token = encrypt(input)
-        const ouptput = decrypt(encrypted)
+        const token = encrypt(input);
 
-        console.log('input', input)
-        console.log('token', token)
-        console.log('ouptput', ouptput)
+        console.log('input', input);
+        console.log('token', token);
+
+        const ouptput = decrypt(token)
+        console.log('ouptput', ouptput);
         
         assert.deepEqual(input, ouptput)
 ```
@@ -21,8 +23,8 @@ cryptr-token is a simple aes-256-ctr token module for node.js
 ### Output
 
 ```
-input { message: 'hello1' }
-token ddKtb4jjaqoWcXFwWYNxBFgM4mAeKrWoWyjyxfS-W-9O85Vm9oIinHb1SUXhiHGMJc5XxVeTEl0Xl1HCxMlbMyNi58U
-ouptput { message: 'hello1' }
+input { message: 'hello' }
+token tP1hwqUMOsj3dkltHQOxPNFn19bRnosVxRdvmKew-2Rcvf-Z
+ouptput { message: 'hello' }
 ```
 

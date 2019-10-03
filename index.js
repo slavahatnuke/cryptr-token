@@ -1,23 +1,52 @@
 const Cryptr = require('cryptr');
-const zlib = require('zlib');
 const base64url = require('base64url');
 
-module.exports = (secret) => {
+function defaultStrinfigy(object = {}) {
+    return JSON.stringify(object);
+}
+
+function defaultDestringify(decrypted) {
+    return JSON.parse(decrypted);
+}
+
+function defaultSign(text, secret) {
+    return text;
+}
+
+function defaultVerify(text, secret) {
+    return text;
+}
+
+function TokenCryptr(
+    // required
+    secret,
+
+    // options
+    {
+        stringify: stringifyOptions = [defaultStrinfigy, defaultDestringify],
+        sign: signOptions = [defaultSign, defaultVerify]
+    } = {}
+) {
+
+    const [strinfigy, destringify] = stringifyOptions;
+    const [sign, verify] = signOptions;
+
     const cryptr = new Cryptr(secret);
 
-    function encrypt(object = {}) {
-        const compressed = zlib.gzipSync(JSON.stringify(object), { level: zlib.constants.Z_BEST_COMPRESSION }).toString('binary');
-        const encryptedHex = cryptr.encrypt(compressed);
+    function encrypt(object) {
+        const stringified = strinfigy(object);
+        const encryptedHex = cryptr.encrypt(stringified);
         const buffer = Buffer.from(encryptedHex, 'hex');
-        return base64url(buffer);
+        return sign(base64url(buffer), secret);
     }
 
     function decrypt(encryptedText) {
         try {
-            const decrypted = cryptr.decrypt(base64url.toBuffer(encryptedText).toString('hex'));
-            return JSON.parse(zlib.gunzipSync(Buffer.from(decrypted, 'binary')));
+            const verified = verify(encryptedText, secret);
+            const decrypted = cryptr.decrypt(base64url.toBuffer(verified).toString('hex'));
+            return destringify(decrypted);
         } catch (error) {
-            throw new Error('Invalid data');
+            throw new Error('INVALID_TOKEN');
         }
     }
 
@@ -26,3 +55,5 @@ module.exports = (secret) => {
         decrypt
     }
 };
+
+module.exports = TokenCryptr;

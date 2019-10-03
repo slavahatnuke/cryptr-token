@@ -5,16 +5,19 @@ const assert = require('assert')
 describe('cryptr-token', function () {
 
     it('test', function () {
-        const {encrypt, decrypt} = Cipher('secret1')
+        const secret = 'secret$$$$here'
+        const {encrypt} = Cipher(secret)
+        const {decrypt} = Cipher(secret)
 
-        const input = {message: 'hello1'}
+        const input = {message: 'hello'}
 
-        const encrypted = encrypt(input);
-        const ouptput = decrypt(encrypted)
+        const token = encrypt(input);
 
-        // console.log('input', input);
-        // console.log('encrypted', encrypted);
-        // console.log('ouptput', ouptput);
+        console.log('input', input);
+        console.log('token', token);
+
+        const ouptput = decrypt(token)
+        console.log('ouptput', ouptput);
         
         assert.deepEqual(input, ouptput)
     })
