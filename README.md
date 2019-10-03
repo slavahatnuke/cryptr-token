@@ -24,7 +24,7 @@ cryptr-token is a simple aes-256-ctr token module for node.js
 
 ```
 input { message: 'hello' }
-token tP1hwqUMOsj3dkltHQOxPNFn19bRnosVxRdvmKew-2Rcvf-Z
+token dceVmpYL5MHit3B1HI4gEDw67aE6gjby4onKrKJRoy769qI
 ouptput { message: 'hello' }
 ```
 
