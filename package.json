@@ -11,7 +11,7 @@
     "cryptr": "^4.0.2"
   },
   "devDependencies": {
-    "mocha": "^6.2.0"
+    "mocha": "^10.2.0"
   },
   "scripts": {
     "test": "mocha"
